@@ -1,0 +1,76 @@
+#shadow {
+    top: 0;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    /* background-color: transparent; */
+}
+
+#person_model {
+    display: flex;
+    width: 70%;
+    margin: 3em auto;
+    height: 90%;
+    position: relative;
+}
+
+#person_model #ul {
+    width: 25%;
+    border-right: 1px solid #460ae2;
+    background-color: #fff;
+    box-shadow: 0px 0 20px #7f54eb;
+    border-radius: 10px 0 0 10px;
+}
+
+#person_model ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 10px 0 0 0;
+    margin-top: 10px;
+}
+
+#person_model #ul li {
+    width: 100%;
+    height: 3em;
+    font-size: 18px;
+    line-height: 3em;
+    color: #460ae2 !important;
+    cursor: pointer;
+}
+
+
+#person_model #ul li span {
+    margin-left: 1em;
+    font-family: pingfang;
+}
+
+
+#person_detail {
+    width: 75%;
+    background-color: #f1f1f1;
+    border-radius: 0 10px 10px 0;
+}
+
+@font-face {
+    font-family: pingfang;
+    src: url('/苹方字体.ttf')
+}
+
+#person_exit {
+    width: 2em;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    color: #fff;
+    right: 0;
+    font-size: 2em;
+    background-color: #a286e7;
+    border-radius: 0 10px 0 0;
+}
+#person_exit:hover {
+    background-color: #460ae2;
+}

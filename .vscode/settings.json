@@ -1,0 +1,5 @@
+{
+    "open-in-browser.default": "Google Chrome",
+    "liveServer.settings.useBrowserPreview": true,
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "Google Chrome"
+}

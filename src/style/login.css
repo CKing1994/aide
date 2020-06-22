@@ -1,0 +1,12 @@
+.pk_input {
+    border: 1px solid #460ae2;
+    border-radius: 5px;
+    padding-left: 0.5em;
+    font-size: 20px;
+    margin: 5px;
+    color: #777;
+}
+
+.pk_input::placeholder {
+    color: rgb(199, 177, 177) !important;
+}

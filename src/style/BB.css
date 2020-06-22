@@ -1,0 +1,12 @@
+.BB_list {
+    margin-top: 40px;
+}
+
+.BB_list li {
+    min-width: 200px;
+    max-width: 900px;
+    min-height: 100px;
+    margin: 10px;
+    border-radius: 8px;
+    padding: 10px;
+}

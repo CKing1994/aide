@@ -1,0 +1,197 @@
+#home {
+    height: 100%;
+}
+
+.anticon.anticon-search {
+    font-size: 20px;
+}
+
+#searchbox {
+    width: 100%;
+    height: 60px;
+}
+
+::selection {
+    color: #fff;
+    background-color: #a286e7;
+}
+
+#search {
+    height: 20px;
+    width: 40%;
+    left: 50%;
+    display: inline-block;
+    position: relative;
+    transform: translateX(100%);
+}
+
+.aaa {
+    transform: translateX(-50%) !important;
+}
+
+#imgbox {
+    width: 100%;
+    background-color: #460ae2;
+}
+
+#imgbox img {
+    width: 100px;
+}
+
+.search {
+    position: absolute;
+    padding: 5px;
+    border: #460ae2 2px solid;
+    border-radius: 10px;
+    width: 0;
+    top: 60%;
+}
+
+.pl {
+    padding-left: 2.5em !important;
+    
+}
+
+.setting {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    transform: translate(-20px,47px);
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    font-size: 1.5em;
+    background-color: #460ae2;
+    color: white;
+    cursor: pointer;
+}
+
+.anticon.anticon-search {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    background-color: #460ae2;
+    color: #e6f7ff;
+    border-radius: 50%;
+    padding: .5em;
+    transform: translateX(10px);
+}
+
+.anticon.anticon-plus {
+    z-index: 990;
+    font-size: 30px;
+    background-color: #460ae2;
+    color: #e6f7ff;
+    border-radius: 50%;
+    padding: 20px;
+    position: fixed;
+    bottom: 0.25em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.rankarrow {
+    position: fixed;
+    right: 0;
+    bottom: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #460ae2;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    font-size: 2em;
+}
+
+
+@keyframes zhankai {
+    from {
+        width: 0em;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes shousuo {
+    from {
+        width: 100%;
+    }
+    
+    to {
+        width: 0em;
+    }
+}
+
+@keyframes shun {
+    from {
+        transform: rotateZ(0);
+    }
+    
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes ni {
+    from {
+        transform: rotateZ(360deg);
+    }
+    
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes fangda {
+    from {
+        transform: scale(1.5);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes suoxiao {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes yidong {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes niyidong {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@media screen and (max-width: 900px)  {
+    
+    #search {
+        left: 100px;
+    }
+}

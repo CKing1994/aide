@@ -1,0 +1,165 @@
+{
+    "meta": "1.0.0",
+    "date": "2020-6-8",
+    "prefix": {
+        "BB_list": "BBlist_name"
+    },
+    "view": {
+        "BB_list": {
+            "data": [
+                {
+                    "id": 1,
+                    "name": "黄俊",
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592389318591&di=daf3d6faa026fcbaebafe0bdf7ad225c&imgtype=0&src=http%3A%2F%2Ffdfs.xmcdn.com%2Fgroup4%2FM09%2F39%2FDE%2FwKgDs1QnaCbDlGcsAABBtg8QVMs944_mobile_large.jpg",
+                    "time": "2020-6-6",
+                    "local": "武汉",
+                    "title": "喷血",
+                    "content": "你有病吧",
+                    "tags": [
+                        "神经病"
+                    ],
+                    "comment": [
+                        "傻卵子"
+                    ],
+                    "zujian": "ass-1",
+                    "reward": {
+                        "other": [3],
+                        "mine": false
+                    }
+                },
+                {
+                    "id": 2,
+                    "name": "江骏平",
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592628601573&di=f761723601e746d802d7d41a1d0ca0c3&imgtype=0&src=http%3A%2F%2Fwww.e3ol.com%2Fbiography%2Fpic%2Fid%2F240%2F699.jpg",
+                    "time": "2020-6-1",
+                    "local": "武汉",
+                    "title": "？？？",
+                    "content": "。。。",
+                    "tags": [
+                        "技术分享","java","后端"
+                    ],
+                    "comment": [
+                        "就还好吧"
+                    ],
+                    "reward": {
+                        "other": [
+                            "龙哥"
+                        ],
+                        "mine": true
+                    }
+                },
+                {
+                    "id": 3,
+                    "name": "范海文",
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592389374233&di=8cdcab7e19bb59feb925de95985d2e94&imgtype=0&src=http%3A%2F%2Fpc.07073.com%2Fuploads%2Fgl%2F20161224%2Fxcbm5i4bw1h.jpg",
+                    "time": "2020-6-3",
+                    "local": "南湖",
+                    "title": "黄俊傻卵子",
+                    "content": "彳亍",
+                    "tags": [
+                        "评论"
+                    ],
+                    "comment": [
+                        {
+                            "id":1,
+                            "content":"GKD"
+                        },
+                        {
+                            "id":2,
+                            "content":"GKD"
+                        }
+                    ],
+                    "reward": {
+                        "other": [1,2],
+                        "mine": false
+                    }
+                },
+                {
+                    "id": 4,
+                    "name": "吴昊",
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592388420290&di=e390d76564166376c9d6c8a293609395&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1417334716%2C1817608421%26fm%3D214%26gp%3D0.jpg",
+                    "time": "2020-6-17",
+                    "local": "武汉",
+                    "title": "丢粑粑",
+                    "content": "兔兔傻逼",
+                    "tags": [
+                        "兔兔素质最高"
+                    ],
+                    "comment": [
+                        "给老子GKD"
+                    ],
+                    "reward": {
+                        "other": [
+                            {
+                                "id":1,
+                                "content":"GKD"
+                            }
+                        ],
+                        "mine": false
+                    }
+                },
+                {
+                    "id": 5,
+                    "name": "杨晓东",
+                    "portrait": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2387708322,2183924096&fm=26&gp=0.jpg",
+                    "time": "2020-6-17",
+                    "local": "武汉",
+                    "title": "hjsb",
+                    "content": "爬",
+                    "tags": [
+                        "牛逼"
+                    ],
+                    "comment": [
+                        "牛逼"
+                    ],
+                    "reward": {
+                        "other": [
+                            "黄俊"
+                        ],
+                        "mine": false
+                    }
+                }
+            ]
+        },
+        "Rank_list": {
+            "data": [
+                {
+                    "id": 1,
+                    "name": "黄俊",
+                    "point": 15000,
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592389318591&di=daf3d6faa026fcbaebafe0bdf7ad225c&imgtype=0&src=http%3A%2F%2Ffdfs.xmcdn.com%2Fgroup4%2FM09%2F39%2FDE%2FwKgDs1QnaCbDlGcsAABBtg8QVMs944_mobile_large.jpg"
+                },
+                {
+                    "id": 2,
+                    "name": "江骏平",
+                    "point": 15000,
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592628601573&di=f761723601e746d802d7d41a1d0ca0c3&imgtype=0&src=http%3A%2F%2Fwww.e3ol.com%2Fbiography%2Fpic%2Fid%2F240%2F699.jpg"
+                },
+                {
+                    "id": 3,
+                    "name": "范海文",
+                    "point": 2000,
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592389374233&di=8cdcab7e19bb59feb925de95985d2e94&imgtype=0&src=http%3A%2F%2Fpc.07073.com%2Fuploads%2Fgl%2F20161224%2Fxcbm5i4bw1h.jpg"
+                },
+                {
+                    "id": 4,
+                    "name": "吴昊",
+                    "point": 16000,
+                    "portrait":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592388420290&di=e390d76564166376c9d6c8a293609395&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1417334716%2C1817608421%26fm%3D214%26gp%3D0.jpg"
+                },
+                {
+                    "id": 5,
+                    "name": "杨晓东",
+                    "point": 800,
+                    "portrait":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2387708322,2183924096&fm=26&gp=0.jpg"
+                },
+                {
+                    "id": 6,
+                    "name": "聂杨晓玥",
+                    "point": 200,
+                    "portrait":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592389527820&di=fdd6ff5301e5a547c822dc8ee4eac161&imgtype=0&src=http%3A%2F%2Fp2.bahamut.com.tw%2FM%2F2KU%2F32%2F0001280832.JPG"
+                }
+            ]
+        }
+    }
+}

@@ -4,5 +4,17 @@ function empty(obj) {
     }
     return true;       //为空
 }
-  
-export { empty }
+
+
+function $(str) {
+    let father = arguments[1] || document
+    return father.querySelector(str)
+}
+
+function _(str) {
+    let father = arguments[1] || document
+    return father.querySelectorAll(str)
+}
+
+
+export { empty, $, _ }

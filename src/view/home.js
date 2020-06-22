@@ -12,6 +12,21 @@ import Person from './Person'
 // }
 
 export default class Home extends Component {
+  state = {
+    person:false
+  }
+
+  close_Person = ()=> {
+    this.setState({
+      person:false
+    })
+  }
+  open_Person = () =>{
+    this.setState({
+      person:true
+    })
+  }
+
   render() {
     return (
       <div id="home">
@@ -20,10 +35,10 @@ export default class Home extends Component {
         </div>
         <div id="searchbox">
           <Search />
-          <Setting />
+          <Setting open={this.open_Person} />
         </div>
         <Rank />
-        <Person />
+        {this.state.person && <Person close={this.close_Person} />}
         <PlusOutlined />
         <BB /> 
         <div id="bgcimg"></div>

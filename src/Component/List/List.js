@@ -47,9 +47,9 @@ export default class List extends Tag {
 
 
             if (father_key) {
-                let jb = father_key + "_" + key
+                let new_key = father_key + "_" + key
 
-                arr.push(this.create({ type: this.tags[jb], data: obj[key], id: key }))
+                arr.push(this.create({ type: this.tags[new_key], data: obj[key], id: key }))
 
                 continue
             }
@@ -153,9 +153,15 @@ export default class List extends Tag {
         this.setState({
             mapper: data.map(ele => {
                 ele = this.sort(ele)
+                let arr = []
+                if(this.splice){
+                    arr = this.splice(this.for(ele))
+                }else{
+                    arr = this.for(ele)
+                }
                 return this.create({
                     type: "li",
-                    data: this.splice(this.for(ele)),
+                    data: arr,
                     key: ele.id
                 })
             })

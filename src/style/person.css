@@ -24,7 +24,7 @@
     border-radius: 10px 0 0 10px;
 }
 
-#person_model ul {
+#person_model>ul {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -33,7 +33,7 @@
     margin-top: 10px;
 }
 
-#person_model #ul li {
+#person_model>#ul li {
     width: 100%;
     height: 3em;
     font-size: 18px;
@@ -43,7 +43,7 @@
 }
 
 
-#person_model #ul li span {
+#person_model>#ul li span {
     margin-left: 1em;
     font-family: pingfang;
 }
@@ -73,4 +73,70 @@
 }
 #person_exit:hover {
     background-color: #460ae2;
+}
+
+#person_detail {
+    padding: 1.5em;
+}
+#person_detail .BBlist_img {
+    width: 6em;
+    height: auto;
+}
+#person_detail #person_id {
+    font-size: 2em;
+    color: #460ae2;
+}
+
+#person_info .vertical{
+    width: 20%;
+    margin-left: 1em;
+}
+
+#person_detail #person_glory {
+    display: flex;
+    width: 20%;
+}
+
+.person_glory {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.person_PersonInfo_info {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.person_PersonInfo_info span {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    background-color: #a286e7;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px 15px 5px 5px;
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+#PersonPointList_ul {
+    width: 40%;
+}
+
+.person_PersonPointList_li {
+    width: 100%;
+}
+
+#control {
+    background-color: #fff;
+    width: 50%;
+    justify-content: space-between;
+}
+#control li {
+    width: 33.33%;
+    text-align: center;
+    cursor: pointer;
 }

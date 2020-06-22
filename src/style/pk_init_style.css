@@ -16,3 +16,25 @@ input {
     border: none;
     outline: none;
 }
+
+
+/* 垂直布局 */
+.vertical {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.vertical>* {
+    width: 100%;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.start {
+    justify-content: start;
+}
+
+/* 等级颜色 */
+

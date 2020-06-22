@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import map from '../../ovoid/util/map'
 
 export default class Tag extends Component {
     state = { type: "" }
@@ -215,15 +216,10 @@ export default class Tag extends Component {
         return new_arr
     }
 
-    // 获取map长度
-    getMapLength(map) {
-        return Object.keys(map).length
-    }
-
     temp_map = new Map()
     init_default_id(attr, tag_type) {
 
-        let len = this.getMapLength(this.temp_map) || 0
+        let len = map.getMapLength(this.temp_map) || 0
 
         let prefix = this.get_ass_name() + "_" + attr + "_" + tag_type
 

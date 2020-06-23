@@ -6,43 +6,50 @@ import Setting from '../Component/Setting';
 import Rank from './Rank';
 import BB from './BB';
 import Person from './Person'
+import event from '../ovoid/event';
+import { _ } from '../ovoid/util/obj';
+
+event.text(_("body")[0])
 
 // window.onload = function(){
 //   console.clear()
 // }
 
+
 export default class Home extends Component {
-  state = {
-    person:false
-  }
+    state = {
+        person: false
+    }
 
-  close_Person = ()=> {
-    this.setState({
-      person:false
-    })
-  }
-  open_Person = () =>{
-    this.setState({
-      person:true
-    })
-  }
+    close_Person = () => {
+        this.setState({
+            person: false
+        })
+    }
+    open_Person = () => {
+        this.setState({
+            person: true
+        })
+    }
 
-  render() {
-    return (
-      <div id="home">
-        <div id="imgbox">
-           <img src="title-logo.png" alt="logo" id="logo"/>
-        </div>
-        <div id="searchbox">
-          <Search />
-          <Setting open={this.open_Person} />
-        </div>
-        <Rank />
-        {this.state.person && <Person close={this.close_Person} />}
-        <PlusOutlined />
-        <BB /> 
-        <div id="bgcimg"></div>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div id="home">
+                <div id="home_top">
+                    <div id="imgbox">
+                        <img src="title-logo.png" alt="logo" id="logo" />
+                    </div>
+                    <div id="searchbox">
+                        <Search />
+                        <Setting open={this.open_Person} />
+                    </div>
+                </div>
+                <Rank />
+                {this.state.person && <Person close={this.close_Person} />}
+                <PlusOutlined />
+                <BB />
+                <div id="bgcimg"></div>
+            </div>
+        )
+    }
 }

@@ -3,8 +3,11 @@
  * 
  */
 
-// 回车事件
-// input、button
+import disable from "./disable";
 
 
+const event = {
+    ...disable
+}
 
+export default event;

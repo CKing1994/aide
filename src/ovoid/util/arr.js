@@ -1,5 +1,15 @@
 const arr = {
 
+    isEmpty(arr){
+        let is = true
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i]){
+                is = false
+            }
+        }
+        return is
+    },
+
     // 删除数组重复项
     del_repeat(arr){
         for (let i = 0; i < arr.length - 1; i++) {

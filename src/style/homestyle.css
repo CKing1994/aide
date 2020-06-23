@@ -32,10 +32,19 @@
 #imgbox {
     width: 100%;
     background-color: #460ae2;
+    z-index: 999;
 }
 
 #imgbox img {
     width: 100px;
+}
+#home_top {
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+}
+#rank {
+    padding-top: 100px;
 }
 
 .search {
@@ -106,6 +115,7 @@
     line-height: 40px;
     border-radius: 50%;
     font-size: 2em;
+    z-index: 999;
 }
 
 

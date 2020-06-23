@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { IdcardTwoTone, AlertTwoTone, UnlockTwoTone, TrophyTwoTone, FileTextTwoTone, FilePdfTwoTone, CheckSquareTwoTone, StarTwoTone } from '@ant-design/icons'
+import { IdcardTwoTone, AlertTwoTone, UnlockTwoTone, TrophyTwoTone, FileTextTwoTone, FilePdfTwoTone, CheckSquareTwoTone, StarTwoTone ,LikeTwoTone,EnvironmentTwoTone} from '@ant-design/icons'
 import { $, _ } from '../ovoid/util/obj'
 import List from '../Component/List/List'
+import ref from '../ovoid/util/ref'
+import { O, OvOid } from '../ovoid'
+import axios from 'axios'
 
 let obj = {
     twoToneColor: "#460ae2"
@@ -13,6 +16,8 @@ export default class Person extends Component {
     }
 
     componentDidMount() {
+        ref.register(this)
+
         this.setMap()
         this.getContent(1)
     }
@@ -36,6 +41,7 @@ export default class Person extends Component {
             content: content
         })
         let ele = _("li", $("#person_model"))[id - 1]
+        
         let bro = ele.parentNode.children
         for (let i = 0; i < bro.length; i++) {
             bro[i].style.backgroundColor = white
@@ -54,7 +60,7 @@ export default class Person extends Component {
             <div id="shadow">
                 <div id="person_model">
                     <span id="person_exit" onClick={this.props.close}>×</span>
-                    <div id="ul">
+                    <div id="ul" ref="person_tab">
                         <ul>
                             <li onClick={() => { this.getContent(1) }}>
                                 <IdcardTwoTone {...obj} />
@@ -168,7 +174,28 @@ let rank_data = {
     }
 }
 
+const SaiDong = {
+    clear(num) {
+        let ele = O.util.get("Person person_tab ul .anticon")[num]
+        this.ele = ele
+        ele.style.animation = "doudong .5s ease-in"
+    },
+    start(num) {
+        if(this.ele){
+            let ele = this.ele
+            ele.style.animation = null
+        }
+    }
+}
+
 class PersonInfo extends Component {
+    componentDidMount(){
+        SaiDong.clear(0)
+    }
+    componentWillUnmount(){
+        SaiDong.start(0)
+    }
+
     show_info(obj) {
         let arr = []
         for (const key in obj) {
@@ -181,7 +208,7 @@ class PersonInfo extends Component {
 
     render() {
         return (
-            <div id="person_info">
+            <div id="person_info" ref="info">
                 <div className="df start">
                     <img className="BBlist_img" src={"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592388420290&di=e390d76564166376c9d6c8a293609395&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1417334716%2C1817608421%26fm%3D214%26gp%3D0.jpg"} />
                     <div className="vertical">
@@ -202,15 +229,121 @@ class PersonInfo extends Component {
     }
 }
 
-class PersonCollection extends Component {
-    render() {
-        return (
-            <div>暂无收藏</div>
-        )
+class PersonCollection extends List {
+
+    tags = {
+        name: "span",
+        time: "span",
+        portrait: "img",
+        title: "h3",
+        local: "h4",
+        content: "p",
+        tags: "span",
+        other: "span"
+    }
+
+    hid = ["id"]
+
+    order = ["portrait", "name", "time", "tags", "title", "content", "zujian", "local", "comment", "reward"]
+
+    splice(arr){
+        let dom = arr.splice(1,2)
+        arr.splice(1,0,<div className={"df"}>{dom}</div>)
+        dom = arr.splice(0,2)
+        arr.unshift(<div className={"df"}>{dom}</div>)
+        dom = arr.splice(0,2)
+        arr.unshift(<div className={"df"}>{dom}</div>)
+        return arr
+    }
+
+    componentDidMount() {
+        SaiDong.clear(1)
+
+        this.registry({
+            attr: "name",
+            className: "BBlist_span BBlist_name person_PersonCollection_name"
+        })
+
+        this.registry({
+            attr: "time",
+            className: "BBlist_time person_PersonCollection_time"
+        })
+
+        this.registry({
+            attr: "portrait",
+            className: "BBlist_img person_PersonCollection_portrait"
+        })
+
+        this.registry({
+            attr: "title",
+            className: "BBlist_title person_PersonCollection_title"
+        })
+
+        this.registry("img", {
+            className: "BBlist_img person_PersonCollection_img"
+        })
+
+        this.registry({
+            attr: "content",
+            className: "BBlist_content person_PersonCollection_content"
+        })
+        this.registry({
+            attr: "zujian",
+            className: "BBlist_ass person_PersonCollection_zujian"
+        })
+
+        this.registry({
+            attr: "tags",
+            className: "BBlist_tags person_PersonCollection_tags"
+        })
+
+        this.registry("li", {
+            className: "BBlist_li person_PersonCollection_li"
+        })
+        
+        this.registry({
+            attr: "other",
+            className: "BBlist_reward",
+            before_icon: <LikeTwoTone />
+        })
+        
+        this.registry({
+            attr: "local",
+            className: "person_PersonCollection_local",
+            before_icon: <EnvironmentTwoTone/>
+        })
+
+        
+        axios.get('config.json').then((res) => {
+
+            // 元素外包裹盒子需要如何处理
+            this.docker_list = [
+                {
+                    tag: "ul", attr: {
+                        id: "person_PersonCollection",
+                    }
+                },
+            ]
+
+            this.mapping(res.data.view.BB_list.data)
+
+        }).catch(function (error) {
+            console.log(error);
+
+        })
+    }
+    componentWillUnmount(){
+        SaiDong.start(1)
     }
 }
 
 class PersonTips extends Component {
+    componentDidMount(){
+        SaiDong.clear(2)
+    }
+    componentWillUnmount(){
+        SaiDong.start(2)
+    }
     render() {
         return (
             <div>暂无收藏</div>
@@ -219,6 +352,12 @@ class PersonTips extends Component {
 }
 
 class PersonPrivacy extends Component {
+    componentDidMount(){
+        SaiDong.clear(3)
+    }
+    componentWillUnmount(){
+        SaiDong.start(3)
+    }
     render() {
         return (
             <div>123</div>
@@ -227,6 +366,12 @@ class PersonPrivacy extends Component {
 }
 
 class PersonTrain extends Component {
+    componentDidMount(){
+        SaiDong.clear(4)
+    }
+    componentWillUnmount(){
+        SaiDong.start(4)
+    }
     render() {
         return (
             <div>123</div>
@@ -235,6 +380,12 @@ class PersonTrain extends Component {
 }
 
 class PersonBB extends Component {
+    componentDidMount(){
+        SaiDong.clear(5)
+    }
+    componentWillUnmount(){
+        SaiDong.start(5)
+    }
     render() {
         return (
             <div>123</div>
@@ -244,13 +395,19 @@ class PersonBB extends Component {
 
 
 class PersonPointList extends Component {
-    state={
-        num:1
+    componentDidMount(){
+        SaiDong.clear(6)
+    }
+    componentWillUnmount(){
+        SaiDong.start(6)
+    }
+    state = {
+        num: 1
     }
 
-    tab = (num)=>{
+    tab = (num) => {
         this.setState({
-            num:num
+            num: num
         })
         // $("#control")
     }
@@ -259,9 +416,9 @@ class PersonPointList extends Component {
         return (
             <div>
                 <ul id="control" className="df">
-                    <li onClick={()=>this.tab(1)}>总排行</li>
-                    <li onClick={()=>this.tab(2)}>UI</li>
-                    <li onClick={()=>this.tab(3)}>后端</li>
+                    <li onClick={() => this.tab(1)}>总排行</li>
+                    <li onClick={() => this.tab(2)}>UI</li>
+                    <li onClick={() => this.tab(3)}>后端</li>
                 </ul>
                 {this.state.num === 1 && <PointList data={rank_data.all.data} />}
                 {this.state.num === 2 && <PointList data={rank_data.ui.data} />}
@@ -273,7 +430,6 @@ class PersonPointList extends Component {
 
 
 class PointList extends List {
-
     tags = {
         rank: "span",
         name: "span",
@@ -314,6 +470,13 @@ class PointList extends List {
 }
 
 class PersonAbout extends Component {
+    componentDidMount(){
+        SaiDong.clear(7)
+    }
+    componentWillUnmount(){
+        SaiDong.start(7)
+    }
+    
     render() {
         return (
             <div>傻逼兔兔</div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import map from '../../ovoid/util/map'
+import ass from '../../ovoid/util/ass'
 
 export default class Tag extends Component {
     state = { type: "" }
@@ -221,7 +222,7 @@ export default class Tag extends Component {
 
         let len = map.getMapLength(this.temp_map) || 0
 
-        let prefix = this.get_ass_name() + "_" + attr + "_" + tag_type
+        let prefix = ass.getName() + "_" + attr + "_" + tag_type
 
         if (len !== 0) {
             this.temp_map.forEach((value, key) => {
@@ -238,8 +239,5 @@ export default class Tag extends Component {
 
         return prefix + "_"
     }
-
-    get_ass_name() {
-        return this._reactInternalFiber.elementType.name
-    }
+    
 }

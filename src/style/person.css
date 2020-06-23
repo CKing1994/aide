@@ -52,7 +52,12 @@
 #person_detail {
     width: 75%;
     background-color: #f1f1f1;
+    overflow-y: scroll;
     border-radius: 0 10px 10px 0;
+}
+
+#person_detail::-webkit-scrollbar {
+    display: none;/*隐藏滚动条*/
 }
 
 @font-face {
@@ -135,8 +140,42 @@
     width: 50%;
     justify-content: space-between;
 }
+
 #control li {
     width: 33.33%;
     text-align: center;
     cursor: pointer;
+}
+
+#person_PersonCollection {
+    width: 90%;
+    margin-top: 5em;
+}
+
+.person_PersonCollection_li {
+    width: 100%;
+}
+
+@keyframes doudong {
+    0% {
+        transform: rotate(0);
+    }
+    20% {
+        transform: rotate(30deg);
+    }
+
+    40% {
+        transform: rotate(0);
+    }
+
+    60% {
+        transform: rotate(0);
+    }
+    80% {
+        transform: rotate(30deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
 }

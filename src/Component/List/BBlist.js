@@ -15,7 +15,6 @@ let tags = {
     content: "p",
     tags: "span",
     other: "span",
-    tags: "span"
 }
 
 export default class BBlist extends List {
@@ -55,7 +54,7 @@ export default class BBlist extends List {
 
         this.registry({
             attr: "portrait",
-            className: "BBlist_img hhh"
+            className: "BBlist_img"
         })
 
         this.registry({
@@ -103,13 +102,11 @@ export default class BBlist extends List {
         
         axios.get('config.json').then((res) => {
 
-
             // 添加容器的方法 如 ul div 等
             this.docker_list = [
                 {
                     tag: "ul", attr: {
                         id: "BBlist",
-                        className: "xxx"
                     }
                 },
             ]

@@ -8,7 +8,7 @@ export default class Rank extends Component {
 
     render() {
         return (
-            <div>
+            <div id="rank">
                 <div className="rankarrow">
                     <LeftCircleOutlined />    
                 </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 import { Tag } from '../Tag';
 import { empty } from '../../ovoid/util/obj';
 import Ass from '../Ass'
@@ -16,13 +17,14 @@ export default class List extends Tag {
 
     // 筛选相应数据渲染
     isHidden(key) {
-        let hid = false
+        let need = false
         for (let i = 0; i < this.hid.length; i++) {
             if (key === this.hid[i]) {
-                hid = true
+                need = true
             }
         }
-        return hid
+        
+        return need
     }
 
 
@@ -67,7 +69,7 @@ export default class List extends Tag {
             }
 
 
-            if (obj[key] == {}) return
+            if (obj[key] === {}) return
 
             let title = Ass.ass_title
             if (typeof obj[key] === "string" && obj[key].split("-")[0] === title) {
@@ -137,10 +139,6 @@ export default class List extends Tag {
     }
 
     addImg(src){
-        String.prototype.endWith = function (endStr) {
-            var d = this.length - endStr.length;
-            return (d >= 0 && this.lastIndexOf(endStr) == d);
-        }
         if (typeof src === "string") {
             if (src.endWith(".jpg") || src.endWith(".png")) {
                 return this.create({ type: "img", data: src})

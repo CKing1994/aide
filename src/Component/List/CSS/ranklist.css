@@ -1,8 +1,9 @@
-.rank_ul {
-    position: absolute;
-    right: 10%;
-    top: 30%;
+#ranklist {
     width: 25%;
+    position: absolute;
+    right: 12em;
+    z-index: 900;
+    margin-top: 3em;
 }
 
 .rank_li {

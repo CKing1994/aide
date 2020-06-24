@@ -16,5 +16,4 @@ function _(str) {
     return father.querySelectorAll(str)
 }
 
-
 export { empty, $, _ }

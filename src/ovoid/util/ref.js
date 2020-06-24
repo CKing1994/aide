@@ -27,6 +27,10 @@ const ref = {
             let temp = arr.splice(2, arr.length - 2)
             for (let i = 0; i < temp.length; i++) {
                 if (temp[i].startWith("#")) {
+                        if(ele.children){
+                        console.log(ele.children);
+                            return this.getDom(ele.children, temp[i])
+                        }
                     // 如果没有 则退到上一层可行处
                     if (ele.querySelector(temp[i])) {
                         ele = ele.querySelector(temp[i])
@@ -54,6 +58,7 @@ const ref = {
                 }
             }
         }
+        
         return ele
     },
     getDom(ele, id) {
@@ -63,6 +68,8 @@ const ref = {
         if (length) {
             for (let i = 0; i < length; i++) {
                 const element = ele[i];
+            console.log(id);
+            console.log(element);
                 if(element.getAttribute("id") === id){
                     return element
                 }else{
@@ -71,11 +78,12 @@ const ref = {
             }
             return
         } else if (children) {
+            
             if (!arr.isEmpty(ele.querySelectorAll(id))) {
                 return ele.querySelectorAll(id)
             }
             return
-        } else if (arr.isEmpty(ele.querySelectorAll(id))) {
+        } else if (arr.isEmpty(ele)) {
             return
         } else if (!arr.isEmpty(ele.querySelectorAll(id))) {
             return ele.querySelectorAll(id)

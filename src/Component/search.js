@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import '../style/homestyle.css';
-import keypress from '../Component/Keypress'
+import keypress from '../ovoid/event/keypress';
 
 export default class Search extends Component {
 
   state = {
-    open: false,
-    key: false,
+    open: false
   }
 
   change = () => {
@@ -17,8 +16,7 @@ export default class Search extends Component {
     let search = document.querySelector("#search")
     if (this.state.open) {
       this.setState({
-        open: false,
-        key:false
+        open: false
       })
       ipt.style.animation = "shousuo ease-in 0.5s"
       ipt.style.width = 0
@@ -30,8 +28,7 @@ export default class Search extends Component {
     }
     else {
       this.setState({
-        open: true,
-        key:true
+        open: true
       })
       ipt.style.animation = "zhankai ease-in 0.5s"
       ipt.style.width = "100%"
@@ -43,8 +40,21 @@ export default class Search extends Component {
     }
   }
 
-  componentDidMount(fn) {
-    keypress(this)
+  componentDidMount() {
+    keypress.register(27, () => {
+      this.setState({
+        open: true
+      })
+      this.change()
+    })
+
+    keypress.register([70, "ctrl"], (e) => {
+      e.preventDefault()
+      this.setState({
+        open: false
+      })
+      this.change()
+    })
   }
 
   render() {

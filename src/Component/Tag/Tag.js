@@ -132,7 +132,9 @@ export default class Tag extends Component {
 
         this.add_to_tag(type, attr)
 
-        data = data || null
+        if(data !==0) {
+            data = data || null
+        }        
 
         if (!type) type = "div"
 

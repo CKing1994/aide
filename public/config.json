@@ -15,11 +15,9 @@
                     "local": "武汉",
                     "title": "喷血",
                     "content": "你有病吧",
-                    "tags": [
-                        "神经病"
-                    ],
+                    "tags": [ "前端","需求" ],
                     "comment": [
-                        "傻卵子"
+                        {"id":3,"content":"傻卵子"}
                     ],
                     "zujian": "ass-1",
                     "reward": {
@@ -39,12 +37,10 @@
                         "技术分享","java","后端"
                     ],
                     "comment": [
-                        "就还好吧"
+                        {"id":2,"content":"就还好吧"}
                     ],
                     "reward": {
-                        "other": [
-                            "龙哥"
-                        ],
+                        "other": [2],
                         "mine": true
                     }
                 },
@@ -56,9 +52,7 @@
                     "local": "南湖",
                     "title": "黄俊傻卵子",
                     "content": "彳亍",
-                    "tags": [
-                        "评论"
-                    ],
+                    "tags": [ "UI" ],
                     "comment": [
                         {
                             "id":1,
@@ -77,14 +71,12 @@
                 {
                     "id": 4,
                     "name": "吴昊",
-                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592388420290&di=e390d76564166376c9d6c8a293609395&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1417334716%2C1817608421%26fm%3D214%26gp%3D0.jpg",
+                    "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592933670614&di=2fc051246fe0f7ad59351678737b6807&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fedfd1c456c91b3b3bbd09eec8abc5b66a0d19c7839011-2nCpl7_fw658",
                     "time": "2020-6-17",
                     "local": "武汉",
                     "title": "丢粑粑",
                     "content": "兔兔傻逼",
-                    "tags": [
-                        "兔兔素质最高"
-                    ],
+                    "tags": [ "前端","战略" ],
                     "comment": [
                         "给老子GKD"
                     ],
@@ -106,9 +98,7 @@
                     "local": "武汉",
                     "title": "hjsb",
                     "content": "爬",
-                    "tags": [
-                        "牛逼"
-                    ],
+                    "tags": [ "java","算法" ],
                     "comment": [
                         "牛逼"
                     ],
@@ -145,7 +135,7 @@
                     "id": 4,
                     "name": "吴昊",
                     "point": 16000,
-                    "portrait":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592388420290&di=e390d76564166376c9d6c8a293609395&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1417334716%2C1817608421%26fm%3D214%26gp%3D0.jpg"
+                    "portrait":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592933670614&di=2fc051246fe0f7ad59351678737b6807&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fedfd1c456c91b3b3bbd09eec8abc5b66a0d19c7839011-2nCpl7_fw658"
                 },
                 {
                     "id": 5,

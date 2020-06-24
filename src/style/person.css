@@ -147,9 +147,8 @@
     cursor: pointer;
 }
 
-#person_PersonCollection {
+#person_PersonCollection_ul {
     width: 90%;
-    margin-top: 5em;
 }
 
 .person_PersonCollection_li {
@@ -178,4 +177,56 @@
     100% {
         transform: rotate(0);
     }
+}
+
+.df {
+    margin: 4px;
+}
+.person_tx {
+    width: 4em;
+    height: 4em;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.person_tx img {
+    width: 100% !important;
+}
+
+.BBlist_reward>.person_PersonCollection_portrait {
+    width: auto !important;
+    height: 2em !important;
+}
+
+#person_PersonCollection {
+    padding-top: 6em;
+    height: 100%;
+    overflow-y: scroll;
+}
+#person_PersonCollection::-webkit-scrollbar {
+    display: none;/*隐藏滚动条*/
+}
+
+#person_info_headimg {
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+#person_info_headimg img {
+    display: inline-block;
+    width: 100% !important;
+    height: auto !important;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#person_collection_tab {
+    height: 6vh;
+    position: fixed;
+    z-index: 999;
+    background-color: #7f54eb;
 }

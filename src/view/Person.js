@@ -1,13 +1,30 @@
 import React, { Component } from 'react'
-import { IdcardTwoTone, AlertTwoTone, UnlockTwoTone, TrophyTwoTone, FileTextTwoTone, FilePdfTwoTone, CheckSquareTwoTone, StarTwoTone ,LikeTwoTone,EnvironmentTwoTone} from '@ant-design/icons'
+import { IdcardTwoTone, AlertTwoTone, UnlockTwoTone, TrophyTwoTone, FileTextTwoTone, FilePdfTwoTone, CheckSquareTwoTone, StarTwoTone, LikeTwoTone, EnvironmentTwoTone } from '@ant-design/icons'
 import { $, _ } from '../ovoid/util/obj'
 import List from '../Component/List/List'
 import ref from '../ovoid/util/ref'
 import { O, OvOid } from '../ovoid'
 import axios from 'axios'
+import local from '../ovoid/http/local'
+import keypress from '../ovoid/event/keypress'
+import Tab from '../ovoid/component/tab'
 
 let obj = {
     twoToneColor: "#460ae2"
+}
+
+let nav_width = {
+    bool:true,
+    change(dad) {
+        if (this.bool) {
+            let newtag = document.createElement("div")
+            newtag.id = "person_collection_tab"
+            dad.appendChild(newtag)
+        }
+        else{
+            dad && dad.removeChild(dad.firstChild)
+        }
+    }
 }
 
 export default class Person extends Component {
@@ -20,6 +37,8 @@ export default class Person extends Component {
 
         this.setMap()
         this.getContent(1)
+
+        keypress.register(27,this.props.close)
     }
 
     map = new Map()
@@ -34,6 +53,9 @@ export default class Person extends Component {
     getContent(id) {
         let content = this.map.get(id)
 
+        local.set("person","person_panel",id)
+        
+
         let purple = "#7f54eb"
         let white = "#fff"
 
@@ -41,7 +63,7 @@ export default class Person extends Component {
             content: content
         })
         let ele = _("li", $("#person_model"))[id - 1]
-        
+
         let bro = ele.parentNode.children
         for (let i = 0; i < bro.length; i++) {
             bro[i].style.backgroundColor = white
@@ -96,7 +118,7 @@ export default class Person extends Component {
                             </li>
                         </ul>
                     </div>
-                    <div id="person_detail">
+                    <div id="person_detail" ref="person_detail">
                         {this.state.content}
                     </div>
                 </div>
@@ -180,8 +202,8 @@ const SaiDong = {
         this.ele = ele
         ele.style.animation = "doudong .5s ease-in"
     },
-    start(num) {
-        if(this.ele){
+    start() {
+        if (this.ele) {
             let ele = this.ele
             ele.style.animation = null
         }
@@ -189,11 +211,11 @@ const SaiDong = {
 }
 
 class PersonInfo extends Component {
-    componentDidMount(){
+    componentDidMount() {
         SaiDong.clear(0)
     }
-    componentWillUnmount(){
-        SaiDong.start(0)
+    componentWillUnmount() {
+        SaiDong.start()
     }
 
     show_info(obj) {
@@ -210,7 +232,9 @@ class PersonInfo extends Component {
         return (
             <div id="person_info" ref="info">
                 <div className="df start">
-                    <img className="BBlist_img" src={"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592388420290&di=e390d76564166376c9d6c8a293609395&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D1417334716%2C1817608421%26fm%3D214%26gp%3D0.jpg"} />
+                    <div id="person_info_headimg">
+                        <img className="BBlist_img" src={"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592933670614&di=2fc051246fe0f7ad59351678737b6807&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fedfd1c456c91b3b3bbd09eec8abc5b66a0d19c7839011-2nCpl7_fw658"} />
+                    </div>
                     <div className="vertical">
                         <span id="person_id">吴昊</span>
                         <div id="person_glory">
@@ -246,18 +270,25 @@ class PersonCollection extends List {
 
     order = ["portrait", "name", "time", "tags", "title", "content", "zujian", "local", "comment", "reward"]
 
-    splice(arr){
-        let dom = arr.splice(1,2)
-        arr.splice(1,0,<div className={"df"}>{dom}</div>)
-        dom = arr.splice(0,2)
+    splice(arr) {
+        let dom = arr.splice(1, 2)
+        arr[0] = <div className="person_tx">{arr[0]}</div>
+        arr.splice(1, 0, <div className={"df"}>{dom}</div>)
+        dom = arr.splice(0, 2)
         arr.unshift(<div className={"df"}>{dom}</div>)
-        dom = arr.splice(0,2)
+        dom = arr.splice(0, 2)
         arr.unshift(<div className={"df"}>{dom}</div>)
         return arr
     }
 
     componentDidMount() {
         SaiDong.clear(1)
+
+        this.Exoderm("div", { id: "person_PersonCollection", ref: "person_PersonCollection" })
+
+        nav_width.bool = true
+        nav_width.change(O.util.get("Person person_detail"))
+
 
         this.registry({
             attr: "name",
@@ -271,7 +302,7 @@ class PersonCollection extends List {
 
         this.registry({
             attr: "portrait",
-            className: "BBlist_img person_PersonCollection_portrait"
+            className: "person_PersonCollection_portrait"
         })
 
         this.registry({
@@ -300,48 +331,54 @@ class PersonCollection extends List {
         this.registry("li", {
             className: "BBlist_li person_PersonCollection_li"
         })
-        
+
         this.registry({
             attr: "other",
             className: "BBlist_reward",
             before_icon: <LikeTwoTone />
         })
-        
+
         this.registry({
             attr: "local",
             className: "person_PersonCollection_local",
-            before_icon: <EnvironmentTwoTone/>
+            before_icon: <EnvironmentTwoTone />
         })
 
-        
+
         axios.get('config.json').then((res) => {
 
             // 元素外包裹盒子需要如何处理
             this.docker_list = [
                 {
                     tag: "ul", attr: {
-                        id: "person_PersonCollection",
+                        id: "person_PersonCollection_ul",
                     }
                 },
             ]
 
             this.mapping(res.data.view.BB_list.data)
 
+            // 给动态添加的元素实时宽度
+            document.querySelector("#person_collection_tab").style.width = parseInt(window.getComputedStyle(O.util.get("Person person_detail li")).width) + "px"
+
         }).catch(function (error) {
             console.log(error);
 
         })
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         SaiDong.start(1)
+
+        nav_width.bool = false
+        nav_width.change(O.util.get("Person person_detail"))
     }
 }
 
 class PersonTips extends Component {
-    componentDidMount(){
+    componentDidMount() {
         SaiDong.clear(2)
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         SaiDong.start(2)
     }
     render() {
@@ -352,10 +389,10 @@ class PersonTips extends Component {
 }
 
 class PersonPrivacy extends Component {
-    componentDidMount(){
+    componentDidMount() {
         SaiDong.clear(3)
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         SaiDong.start(3)
     }
     render() {
@@ -366,10 +403,10 @@ class PersonPrivacy extends Component {
 }
 
 class PersonTrain extends Component {
-    componentDidMount(){
+    componentDidMount() {
         SaiDong.clear(4)
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         SaiDong.start(4)
     }
     render() {
@@ -380,10 +417,10 @@ class PersonTrain extends Component {
 }
 
 class PersonBB extends Component {
-    componentDidMount(){
+    componentDidMount() {
         SaiDong.clear(5)
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         SaiDong.start(5)
     }
     render() {
@@ -394,11 +431,15 @@ class PersonBB extends Component {
 }
 
 
-class PersonPointList extends Component {
-    componentDidMount(){
+class PersonPointList extends Tab {
+    componentDidMount() {
         SaiDong.clear(6)
+
+        this.setState({
+            tab_bar:[{id:1}]
+        })
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         SaiDong.start(6)
     }
     state = {
@@ -412,24 +453,10 @@ class PersonPointList extends Component {
         // $("#control")
     }
 
-    render() {
-        return (
-            <div>
-                <ul id="control" className="df">
-                    <li onClick={() => this.tab(1)}>总排行</li>
-                    <li onClick={() => this.tab(2)}>UI</li>
-                    <li onClick={() => this.tab(3)}>后端</li>
-                </ul>
-                {this.state.num === 1 && <PointList data={rank_data.all.data} />}
-                {this.state.num === 2 && <PointList data={rank_data.ui.data} />}
-                {this.state.num === 3 && <PointList data={rank_data.backend.data} />}
-            </div>
-        )
-    }
 }
 
 
-class PointList extends List {
+export class PointList extends List {
     tags = {
         rank: "span",
         name: "span",
@@ -439,6 +466,7 @@ class PointList extends List {
     order = ["rank", "name", "point"]
 
     componentDidMount() {
+
         this.registry("rank", {
             className: "person_PersonPointList_rank"
         })
@@ -466,17 +494,23 @@ class PointList extends List {
         ]
 
         this.mapping(this.props.data)
+
+        // this.nav_change(true)
+    }
+
+    componentWillUnmount() {
+        // this.nav_change(false)
     }
 }
 
 class PersonAbout extends Component {
-    componentDidMount(){
+    componentDidMount() {
         SaiDong.clear(7)
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         SaiDong.start(7)
     }
-    
+
     render() {
         return (
             <div>傻逼兔兔</div>

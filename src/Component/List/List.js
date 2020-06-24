@@ -13,6 +13,8 @@ export default class List extends Tag {
     state = {
         ...this.state,
         mapper: [],
+        Exoderm: React.Fragment,
+        attr:{}
     }
 
     // 筛选相应数据渲染
@@ -23,7 +25,7 @@ export default class List extends Tag {
                 need = true
             }
         }
-        
+
         return need
     }
 
@@ -79,8 +81,6 @@ export default class List extends Tag {
                 continue
             }
 
-
-
             if (obj[key] instanceof Array) {
                 let temp_arr = []
                 obj[key].map(ele => {
@@ -94,8 +94,8 @@ export default class List extends Tag {
 
                             // 根据id获取src 额外添加的图片
                             let img = this.addImg(src)
-                            
-                            
+
+
                             temp_arr.push(this.create({ type: A, data: [img], id: key }))
                         } else {
                             if (obj[key] instanceof Array) {
@@ -138,10 +138,10 @@ export default class List extends Tag {
         return arr
     }
 
-    addImg(src){
+    addImg(src) {
         if (typeof src === "string") {
             if (src.endWith(".jpg") || src.endWith(".png")) {
-                return this.create({ type: "img", data: src})
+                return this.create({ type: "img", data: src })
             }
         }
     }
@@ -152,9 +152,9 @@ export default class List extends Tag {
             mapper: data.map(ele => {
                 ele = this.sort(ele)
                 let arr = []
-                if(this.splice){
+                if (this.splice) {
                     arr = this.splice(this.for(ele))
-                }else{
+                } else {
                     arr = this.for(ele)
                 }
                 return this.create({
@@ -171,11 +171,20 @@ export default class List extends Tag {
 
     }
 
+    Exoderm(type,obj) {
+        this.setState({
+            Exoderm:type,
+            attr:obj
+        })
+    }
+
+
     data_list = []
 
     render() {
+        let Exoderm = this.state.Exoderm
         return (
-            this.docker([this.state.mapper, ...this.data_list])
+            <Exoderm {...this.state.attr}>{this.docker([this.state.mapper, ...this.data_list])}</Exoderm>
         )
     }
 }

@@ -12,7 +12,7 @@
 }
 
 #BB {
-    height: 600px;
+    height: 86%;
     overflow-y: scroll;
 }
 #BB::-webkit-scrollbar {

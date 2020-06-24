@@ -8,8 +8,11 @@ import BB from './BB';
 import Person from './Person'
 import event from '../ovoid/event';
 import { _ } from '../ovoid/util/obj';
+import local from '../ovoid/http/local';
+import keypress from '../ovoid/event/keypress';
 
-event.text(_("body")[0])
+event.text(_("span"))
+keypress.init()
 
 // window.onload = function(){
 //   console.clear()
@@ -19,6 +22,11 @@ event.text(_("body")[0])
 export default class Home extends Component {
     state = {
         person: false
+    }
+
+    componentDidMount() {
+        if (local.get("person")) {
+        }
     }
 
     close_Person = () => {

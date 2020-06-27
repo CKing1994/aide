@@ -20,9 +20,10 @@ export default class Tag extends Component {
             if (obj.attr) {
                 // 属性对象
                 attr = obj.attr
-            } else {
-                // 普通对象
-
+            }
+            
+            if(arguments[0] instanceof Array) {
+                arguments[0].map(ele=>this.registry(ele))
             }
         }
 

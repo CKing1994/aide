@@ -16,4 +16,16 @@ function _(str) {
     return father.querySelectorAll(str)
 }
 
+const obj = {
+    
+    getObjectValues(object) {
+        var values = [];
+        for (var property in object)
+            values.push(object[property]);
+        return values;
+    }
+}
+
 export { empty, $, _ }
+
+export default obj;

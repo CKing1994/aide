@@ -33,7 +33,7 @@ input {
 }
 
 .start {
-    justify-content: start;
+    justify-content: start !important;
 }
 
 /* 等级颜色 */

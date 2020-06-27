@@ -13,8 +13,8 @@ const local = {
         return JSON.parse(localStorage.getItem(view))
     },
 
-    clear() {
-
+    clear(view) {
+        localStorage.clear(view)
     },
 
     

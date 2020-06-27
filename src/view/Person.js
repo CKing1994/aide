@@ -1,30 +1,18 @@
 import React, { Component } from 'react'
-import { IdcardTwoTone, AlertTwoTone, UnlockTwoTone, TrophyTwoTone, FileTextTwoTone, FilePdfTwoTone, CheckSquareTwoTone, StarTwoTone, LikeTwoTone, EnvironmentTwoTone } from '@ant-design/icons'
+import { IdcardTwoTone, AlertTwoTone, UnlockTwoTone, TrophyTwoTone, FileTextTwoTone, FilePdfTwoTone, CheckSquareTwoTone, StarTwoTone } from '@ant-design/icons'
 import { $, _ } from '../ovoid/util/obj'
 import List from '../Component/List/List'
 import ref from '../ovoid/util/ref'
-import { O, OvOid } from '../ovoid'
-import axios from 'axios'
+import { O } from '../ovoid'
 import local from '../ovoid/http/local'
 import keypress from '../ovoid/event/keypress'
 import Tab from '../ovoid/component/tab'
+import hjjp from '../ovoid/http/hjjp'
+import config from './config'
+import Silder from '../Component/Slider'
 
 let obj = {
     twoToneColor: "#460ae2"
-}
-
-let nav_width = {
-    bool:true,
-    change(dad) {
-        if (this.bool) {
-            let newtag = document.createElement("div")
-            newtag.id = "person_collection_tab"
-            dad.appendChild(newtag)
-        }
-        else{
-            dad && dad.removeChild(dad.firstChild)
-        }
-    }
 }
 
 export default class Person extends Component {
@@ -36,9 +24,14 @@ export default class Person extends Component {
         ref.register(this)
 
         this.setMap()
-        this.getContent(1)
 
-        keypress.register(27,this.props.close)
+        if (local.get("person")) {
+            this.getContent(local.get("person")["person_panel"])
+        } else {
+            this.getContent(1)
+        }
+
+        keypress.register(27, this.props.close)
     }
 
     map = new Map()
@@ -53,8 +46,8 @@ export default class Person extends Component {
     getContent(id) {
         let content = this.map.get(id)
 
-        local.set("person","person_panel",id)
-        
+        local.set("person", "person_panel", id)
+
 
         let purple = "#7f54eb"
         let white = "#fff"
@@ -135,66 +128,6 @@ let my_data = {
     当前积分: "16000",
 }
 
-let rank_data = {
-    all: {
-        data: [
-            {
-                rank: 1,
-                name: "黄俊",
-                point: 15000
-            },
-            {
-                rank: 2,
-                name: "江骏平",
-                point: 12000
-            },
-            {
-                rank: 3,
-                name: "范海文",
-                point: 10000
-            }
-        ],
-    },
-    ui: {
-        data: [
-            {
-                rank: 1,
-                name: "范海文",
-                point: 1500
-            },
-            {
-                rank: 2,
-                name: "黄俊",
-                point: 1000
-            },
-            {
-                rank: 3,
-                name: "江骏平",
-                point: 0
-            }
-        ],
-
-    },
-    backend: {
-        data: [
-            {
-                rank: 1,
-                name: "黄俊",
-                point: 7000
-            },
-            {
-                rank: 2,
-                name: "江骏平",
-                point: 5000
-            },
-            {
-                rank: 3,
-                name: "范海文",
-                point: 0
-            }
-        ],
-    }
-}
 
 const SaiDong = {
     clear(num) {
@@ -253,7 +186,35 @@ class PersonInfo extends Component {
     }
 }
 
-class PersonCollection extends List {
+
+class PersonCollection extends Tab {
+    componentDidMount() {
+        SaiDong.clear(1)
+        ref.register(this)
+
+        this.Ass = PersonCollectionList
+        this.bgc_color = "#7f54eb"
+
+        this.setState({
+            tab_bar: [
+                { id: 1, event: this.toggle, name: "所有" },
+                { id: 2, event: this.toggle, name: "工单" },
+                { id: 3, event: this.toggle, name: "杂谈" },
+            ]
+        })
+        this.toggle(1)
+
+        hjjp('config.json', (res) => {
+            this.mapping(res.data.view.collection_data)
+        })
+    }
+
+    componentWillUnmount() {
+        SaiDong.start()
+    }
+}
+
+class PersonCollectionList extends List {
 
     tags = {
         name: "span",
@@ -282,95 +243,29 @@ class PersonCollection extends List {
     }
 
     componentDidMount() {
-        SaiDong.clear(1)
+        this.registry(config.person)
 
-        this.Exoderm("div", { id: "person_PersonCollection", ref: "person_PersonCollection" })
-
-        nav_width.bool = true
-        nav_width.change(O.util.get("Person person_detail"))
-
-
-        this.registry({
-            attr: "name",
-            className: "BBlist_span BBlist_name person_PersonCollection_name"
-        })
-
-        this.registry({
-            attr: "time",
-            className: "BBlist_time person_PersonCollection_time"
-        })
-
-        this.registry({
-            attr: "portrait",
-            className: "person_PersonCollection_portrait"
-        })
-
-        this.registry({
-            attr: "title",
-            className: "BBlist_title person_PersonCollection_title"
-        })
 
         this.registry("img", {
             className: "BBlist_img person_PersonCollection_img"
-        })
-
-        this.registry({
-            attr: "content",
-            className: "BBlist_content person_PersonCollection_content"
-        })
-        this.registry({
-            attr: "zujian",
-            className: "BBlist_ass person_PersonCollection_zujian"
-        })
-
-        this.registry({
-            attr: "tags",
-            className: "BBlist_tags person_PersonCollection_tags"
         })
 
         this.registry("li", {
             className: "BBlist_li person_PersonCollection_li"
         })
 
-        this.registry({
-            attr: "other",
-            className: "BBlist_reward",
-            before_icon: <LikeTwoTone />
+        // 元素外包裹盒子需要如何处理
+        this.docker_list = [
+            {
+                tag: "ul", attr: {
+                    id: "person_PersonCollection_ul",
+                }
+            },
+        ]
+
+        hjjp('config.json', res => {
+            this.mapping(this.props.data)
         })
-
-        this.registry({
-            attr: "local",
-            className: "person_PersonCollection_local",
-            before_icon: <EnvironmentTwoTone />
-        })
-
-
-        axios.get('config.json').then((res) => {
-
-            // 元素外包裹盒子需要如何处理
-            this.docker_list = [
-                {
-                    tag: "ul", attr: {
-                        id: "person_PersonCollection_ul",
-                    }
-                },
-            ]
-
-            this.mapping(res.data.view.BB_list.data)
-
-            // 给动态添加的元素实时宽度
-            document.querySelector("#person_collection_tab").style.width = parseInt(window.getComputedStyle(O.util.get("Person person_detail li")).width) + "px"
-
-        }).catch(function (error) {
-            console.log(error);
-
-        })
-    }
-    componentWillUnmount() {
-        SaiDong.start(1)
-
-        nav_width.bool = false
-        nav_width.change(O.util.get("Person person_detail"))
     }
 }
 
@@ -411,8 +306,31 @@ class PersonTrain extends Component {
     }
     render() {
         return (
-            <div>123</div>
+            <PersonSilder />
         )
+    }
+}
+
+let data = {
+    data:[
+        {
+            id:1,
+            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593257595274&di=1968d8fb4bf9174e81ad750c5e348e43&imgtype=0&src=http%3A%2F%2Fupload.hf365.com%2F2018%2F1116%2F1542336776958.jpg"
+        },
+        {
+            id:2,
+            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593257595274&di=1968d8fb4bf9174e81ad750c5e348e43&imgtype=0&src=http%3A%2F%2Fupload.hf365.com%2F2018%2F1116%2F1542336776958.jpg"
+        },
+        {
+            id:3,
+            src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593257595274&di=1968d8fb4bf9174e81ad750c5e348e43&imgtype=0&src=http%3A%2F%2Fupload.hf365.com%2F2018%2F1116%2F1542336776958.jpg"
+        }
+    ],
+}
+
+class PersonSilder extends Silder {
+    componentDidMount() {
+        this.mapping(data.data)
     }
 }
 
@@ -434,25 +352,28 @@ class PersonBB extends Component {
 class PersonPointList extends Tab {
     componentDidMount() {
         SaiDong.clear(6)
+        ref.register(this)
+
+        this.Ass = PointList
+        this.bgc_color = "#7f54eb"
 
         this.setState({
-            tab_bar:[{id:1}]
+            tab_bar: [
+                { id: 1, event: this.toggle, name: "总排行" },
+                { id: 2, event: this.toggle, name: "UI" },
+                { id: 3, event: this.toggle, name: "后端" },
+            ]
+        })
+        this.toggle(1)
+
+        hjjp('config.json', (res) => {
+            this.mapping(res.data.view.rank_data)
         })
     }
+
     componentWillUnmount() {
         SaiDong.start(6)
     }
-    state = {
-        num: 1
-    }
-
-    tab = (num) => {
-        this.setState({
-            num: num
-        })
-        // $("#control")
-    }
-
 }
 
 
@@ -494,27 +415,31 @@ export class PointList extends List {
         ]
 
         this.mapping(this.props.data)
-
-        // this.nav_change(true)
-    }
-
-    componentWillUnmount() {
-        // this.nav_change(false)
     }
 }
 
-class PersonAbout extends Component {
-    componentDidMount() {
-        SaiDong.clear(7)
-    }
-    componentWillUnmount() {
-        SaiDong.start(7)
+class PersonAbout extends List {
+    tags = {
+        name: "span",
     }
 
-    render() {
-        return (
-            <div>傻逼兔兔</div>
-        )
+    order = ["name"]
+    componentDidMount() {
+        SaiDong.clear(7)
+
+
+        this.registry("li", {
+            className: "person_PersonPointList_li df"
+        })
+
+        hjjp("config.json", res => {
+            this.mapping(res.data.view.BB_list.data)
+        })
+    }
+
+
+    componentWillUnmount() {
+        SaiDong.start(7)
     }
 }
 

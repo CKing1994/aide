@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { LeftCircleOutlined } from '@ant-design/icons';
-import Ranklist from '../Component/List/Ranklist';
+import Ranklist from './Ranklist';
 
 // document.body.style.position='fixed';
 

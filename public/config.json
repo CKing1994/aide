@@ -150,6 +150,115 @@
                     "portrait":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592389527820&di=fdd6ff5301e5a547c822dc8ee4eac161&imgtype=0&src=http%3A%2F%2Fp2.bahamut.com.tw%2FM%2F2KU%2F32%2F0001280832.JPG"
                 }
             ]
+        },
+        "rank_data":{
+            "all": {
+                "data": [
+                    {
+                        "rank": 1,
+                        "name": "黄俊",
+                        "point": 15000
+                    },
+                    {
+                        "rank": 2,
+                        "name": "江骏平",
+                        "point": 12000
+                    },
+                    {
+                        "rank": 3,
+                        "name": "范海文",
+                        "point": 10000
+                    }
+                ]
+            },
+            "ui": {
+                "data": [
+                    {
+                        "rank": 1,
+                        "name": "范海文",
+                        "point": 1500
+                    },
+                    {
+                        "rank": 2,
+                        "name": "黄俊",
+                        "point": 1000
+                    },
+                    {
+                        "rank": 3,
+                        "name": "江骏平",
+                        "point": 0
+                    }
+                ]
+            },
+            "backend": {
+                "data": [
+                    {
+                        "rank": 1,
+                        "name": "黄俊",
+                        "point": 7000
+                    },
+                    {
+                        "rank": 2,
+                        "name": "江骏平",
+                        "point": 5000
+                    },
+                    {
+                        "rank": 3,
+                        "name": "范海文",
+                        "point": 0
+                    }
+                ]
+            }
+        },
+        "collection_data":{
+            "all": {
+                "data": [
+                    {
+                        "id": 1,
+                        "name": "黄俊",
+                        "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592389318591&di=daf3d6faa026fcbaebafe0bdf7ad225c&imgtype=0&src=http%3A%2F%2Ffdfs.xmcdn.com%2Fgroup4%2FM09%2F39%2FDE%2FwKgDs1QnaCbDlGcsAABBtg8QVMs944_mobile_large.jpg",
+                        "time": "2020-6-6",
+                        "local": "武汉",
+                        "title": "喷血",
+                        "content": "你有病吧",
+                        "tags": [ "前端","需求" ],
+                        "comment": [
+                            {"id":3,"content":"傻卵子"}
+                        ],
+                        "zujian": "ass-1",
+                        "reward": {
+                            "other": [3],
+                            "mine": false
+                        }
+                    }
+                ]
+            },
+            "order":{
+                "data":[
+                    {
+                        "id": 4,
+                        "name": "吴昊",
+                        "portrait": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592933670614&di=2fc051246fe0f7ad59351678737b6807&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2Fedfd1c456c91b3b3bbd09eec8abc5b66a0d19c7839011-2nCpl7_fw658",
+                        "time": "2020-6-17",
+                        "local": "武汉",
+                        "title": "丢粑粑",
+                        "content": "兔兔傻逼",
+                        "tags": [ "前端","战略" ],
+                        "comment": [
+                            "给老子GKD"
+                        ],
+                        "reward": {
+                            "other": [
+                                {
+                                    "id":1,
+                                    "content":"GKD"
+                                }
+                            ],
+                            "mine": false
+                        }
+                    }
+                ]
+            }
         }
     }
 }

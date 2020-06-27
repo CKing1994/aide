@@ -1,0 +1,124 @@
+#BBlist {
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 400px;
+    max-width: 600px;
+    margin: 0 20px 0 20px;
+}
+
+.BBlist_li {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 2em;
+    box-shadow: 0 0 10px #ddd;
+}
+
+.BBlist_span {
+    font-size: 20px;
+    font-weight: 900;
+    color: #460ae2;
+}
+
+.BBlist_time {
+    font-size: 16px;
+    margin: 2px 5px;
+    color: #7141eb;
+}
+
+.BBlist_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+}
+
+.BBlist_title {
+    text-align: left;
+    background-color: #a687f3;
+    color: #fff;
+    display: inline-block;
+    width: 20%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.BBlist_tags {
+    background-color: blue;
+    margin: 0 2px;
+    color: #fff;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.BBlist_p {
+    display: inline-block;
+    position: absolute;
+}
+
+.BBlist_local {
+    color: #1890ff;
+}
+
+p.BBlist_content {
+    text-indent: 2em;
+    padding: 4px 8px;
+    width: 40%;
+}
+.BBlist_ass {
+    padding: 2em;
+}
+
+.df {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.df>.BBlist_name {
+    width: 100%;
+    line-height: 1em;
+    margin: 2px 5px;
+}
+
+span.BBlist_content {
+    display: block;
+}
+
+.BBlist_reward img {
+    width: 30px;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 2px;
+}
+
+.m2 {
+    margin: 0 2em;
+}
+
+.selection {
+    color: #fff;
+    width: 30%;
+    height: 3em;
+    border-color: 1px solid #460ae2;
+    outline: none;
+    line-height: 40px;
+    padding-left: 20px;
+    background-color:transparent;
+    margin-top:0px;
+    border-radius:4px;
+    padding: .25em;
+    flex: 1;
+    background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592628601573&di=f761723601e746d802d7d41a1d0ca0c3&imgtype=0&src=http%3A%2F%2Fwww.e3ol.com%2Fbiography%2Fpic%2Fid%2F240%2F699.jpg") no-repeat;
+    background-size: 100%;
+    background-position: 0 50%;
+    font-weight: 900;
+    font-size: 18px;
+}
+.selection option {
+    color: #460ae2;
+    
+}

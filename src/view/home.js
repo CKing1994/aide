@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
-import '../style/homestyle.css';
-import Search from '../Component/search';
-import Setting from '../Component/Setting';
+import Search from './search';
+import Setting from './Setting';
 import Rank from './Rank';
 import BB from './BB';
 import Person from './Person'
@@ -26,10 +25,13 @@ export default class Home extends Component {
 
     componentDidMount() {
         if (local.get("person")) {
+            this.open_Person()
         }
     }
 
     close_Person = () => {
+        // 可清除也可不清除
+        // local.clear("person")
         this.setState({
             person: false
         })

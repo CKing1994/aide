@@ -14,7 +14,8 @@ export default class List extends Tag {
         ...this.state,
         mapper: [],
         Exoderm: React.Fragment,
-        attr:{}
+        attr: {},
+        tag: function () { }
     }
 
     // 筛选相应数据渲染
@@ -129,8 +130,6 @@ export default class List extends Tag {
                 }
             }
             if (typeof obj[key] === "number") {
-                console.log(obj[key]);
-
                 arr.push(this.create({ data: obj[key], id: key }))
             }
         }
@@ -148,22 +147,24 @@ export default class List extends Tag {
 
     // 数据展开
     mapping(data) {
-        this.setState({
-            mapper: data.map(ele => {
-                ele = this.sort(ele)
-                let arr = []
-                if (this.splice) {
-                    arr = this.splice(this.for(ele))
-                } else {
-                    arr = this.for(ele)
-                }
-                return this.create({
-                    type: "li",
-                    data: arr,
-                    key: ele.id
+        if (data) {
+            this.setState({
+                mapper: data.map(ele => {
+                    ele = this.sort(ele)
+                    let arr = []
+                    if (this.splice) {
+                        arr = this.splice(this.for(ele))
+                    } else {
+                        arr = this.for(ele)
+                    }
+                    return this.create({
+                        type: "li",
+                        data: arr,
+                        key: ele.id
+                    })
                 })
             })
-        })
+        }
     }
 
     // 添加入列表时排查是否含有重复项
@@ -171,20 +172,24 @@ export default class List extends Tag {
 
     }
 
-    Exoderm(type,obj) {
+    // this.Exoderm("div", { id: "person_PersonCollection", ref: "person_PersonCollection" })
+    Exoderm(fn) {
         this.setState({
-            Exoderm:type,
-            attr:obj
+            fn: fn
         })
     }
+
+    // this.Exoderm(function (content) {
+    //     return <div id="a123"><p id="b123"></p>{content}</div>
+    // })
 
 
     data_list = []
 
     render() {
-        let Exoderm = this.state.Exoderm
+        let data = this.docker([this.state.mapper, ...this.data_list])
         return (
-            <Exoderm {...this.state.attr}>{this.docker([this.state.mapper, ...this.data_list])}</Exoderm>
+            this.state.fn ? this.state.fn(data) : data
         )
     }
 }

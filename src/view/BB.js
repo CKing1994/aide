@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BBlist } from '../Component/List';
+import BBlist from './BBlist';
 
 export default class BB extends Component {
     render() {

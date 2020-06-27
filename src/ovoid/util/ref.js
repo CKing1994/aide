@@ -28,7 +28,6 @@ const ref = {
             for (let i = 0; i < temp.length; i++) {
                 if (temp[i].startWith("#")) {
                         if(ele.children){
-                        console.log(ele.children);
                             return this.getDom(ele.children, temp[i])
                         }
                     // 如果没有 则退到上一层可行处
@@ -48,7 +47,6 @@ const ref = {
                     // 如果没有 则退到上一层可行处
                     if (ele.querySelectorAll(temp[i]) || ele instanceof Array) {
                         ele = ele.querySelectorAll(temp[i])
-                        console.log(ele);
 
                         for (let j = 0; j < ele.length; j++) {
                             ele = ele[j]
@@ -68,8 +66,6 @@ const ref = {
         if (length) {
             for (let i = 0; i < length; i++) {
                 const element = ele[i];
-            console.log(id);
-            console.log(element);
                 if(element.getAttribute("id") === id){
                     return element
                 }else{
@@ -88,7 +84,36 @@ const ref = {
         } else if (!arr.isEmpty(ele.querySelectorAll(id))) {
             return ele.querySelectorAll(id)
         }
+    },
+
+    //chils= s.childNodes;  //得到s的全部子节点 
+　　　　//par=s.parentNode;   //得到s的父节点 
+　　　　//ns=s.nextSibling;   //获得s的下一个兄弟节点 
+　　　　//ps=s.previousSibling;  //得到s的上一个兄弟节点 
+　　　　//fc=s.firstChild;   //获得s的第一个子节点 
+　　　　//lc=s.lastChild;   //获得s的最后一个子节点
+}
+
+
+let nav = {
+    bool: true,
+    change(dad) {
+        if (this.bool) {
+            let newtag = document.createElement("div")
+            newtag.id = "person_collection_tab"
+            dad.appendChild(newtag)
+        }
+        else {
+            dad && dad.removeChild(dad.firstChild)
+        }
     }
 }
+// 组件加载时
+// nav.bool = true
+// nav.change(O.util.get("Person person_detail"))
+
+// 组件卸载时
+// nav.bool = false
+// nav.change(O.util.get("Person person_detail"))
 
 export default ref;
